@@ -1,4 +1,9 @@
-const menu [
+interface Order {
+    id: number;
+    pizzaName: string;
+    status: string;
+}
+const menu =[
     {name:"margarita", price: 5},
     {name:"Olives", price: 7},
     {name:"vegetarian", price: 6},
@@ -6,8 +11,9 @@ const menu [
 ]
 
 let nextOrderId=0;
-const cashInRegister = 100;
-const orderQue=[]
+let cashInRegister = 100;
+
+const orderQue: Order[] = [];
 
 function addNewPizza(pizzaObj){
     menu.push(pizzaObj)
@@ -15,10 +21,14 @@ function addNewPizza(pizzaObj){
 
 function placeOrder(namePizza){
     const pizza = menu.find(pizza => pizza.name === namePizza)
+    if (!pizza) {
+        throw new Error(`Pizza with name ${namePizza} not found`);
+    }
     cashInRegister += pizza.price;
     const newOrder ={
+        id:nextOrderId++,
         pizzaName: pizza.name,
-        status:"orderded",id:nextOrderId++
+        status:"orderded"
     }
     orderQue.push(newOrder)
     return newOrder
@@ -26,6 +36,15 @@ function placeOrder(namePizza){
 
 function completedOrder(orderId){
     const order = orderQue.find(order => order.id === orderId)
+    if (!order) {
+        throw new Error(`Pizza with id ${orderId} not found`);
+    }
     order.status = "completed"
     return order
 }
+
+addNewPizza({name:"Tommatos", price: 9})
+placeOrder("Tommatos")
+completedOrder(0)
+console.log("Order",orderQue)
+console.log("Cash",cashInRegister)
