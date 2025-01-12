@@ -21,11 +21,11 @@ let cashInRegister = 100;
 
 const orderQue: Order[] = [];
 
-function addNewPizza(pizzaObj:Pizza){
+function addNewPizza(pizzaObj:Pizza):void{
     menu.push(pizzaObj)
 }
 
-function placeOrder(namePizza:string):Order{
+function placeOrder(namePizza:string):Order | undefined{
     const pizza = menu.find(pizza => pizza.name === namePizza)
     if (!pizza) {
         throw new Error(`Pizza with name ${namePizza} not found`);
@@ -40,7 +40,7 @@ function placeOrder(namePizza:string):Order{
     return newOrder
 }
 
-function completedOrder(orderId:number):Order{
+function completedOrder(orderId:number):Order | undefined{
     const order = orderQue.find(order => order.id === orderId)
     if (!order) {
         throw new Error(`Pizza with id ${orderId} not found`);
