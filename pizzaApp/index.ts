@@ -19,7 +19,7 @@ function addNewPizza(pizzaObj){
     menu.push(pizzaObj)
 }
 
-function placeOrder(namePizza){
+function placeOrder(namePizza:string){
     const pizza = menu.find(pizza => pizza.name === namePizza)
     if (!pizza) {
         throw new Error(`Pizza with name ${namePizza} not found`);
@@ -34,7 +34,7 @@ function placeOrder(namePizza){
     return newOrder
 }
 
-function completedOrder(orderId){
+function completedOrder(orderId:number){
     const order = orderQue.find(order => order.id === orderId)
     if (!order) {
         throw new Error(`Pizza with id ${orderId} not found`);
