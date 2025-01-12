@@ -1,9 +1,14 @@
+type Pizza = {
+    name: string;
+    price: number;
+}
+
 interface Order {
     id: number;
     pizzaName: string;
     status: string;
 }
-const menu =[
+const menu:Pizza[] =[
     {name:"margarita", price: 5},
     {name:"Olives", price: 7},
     {name:"vegetarian", price: 6},
