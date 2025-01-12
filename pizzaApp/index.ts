@@ -49,6 +49,15 @@ function completedOrder(orderId:number){
     return order
 }
 
+
+function getPizzaDetail(identifier: string|number){
+    if(typeof identifier === "string"){
+        return menu.find(pizza => pizza.name.toLowerCase() === identifier.toLowerCase())
+    }else{
+        return menu.find(pizza => pizza.id === identifier)
+    }
+}
+
 addNewPizza({id:4,name:"Tommatos", price: 9})
 placeOrder("Tommatos")
 completedOrder(0)
