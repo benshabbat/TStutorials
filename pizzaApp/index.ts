@@ -50,11 +50,14 @@ function completedOrder(orderId:number){
 }
 
 
-function getPizzaDetail(identifier: string|number){
+export function getPizzaDetails(identifier: string|number):Pizza|undefined{
     if(typeof identifier === "string"){
         return menu.find(pizza => pizza.name.toLowerCase() === identifier.toLowerCase())
-    }else{
+    }else if(typeof identifier === "number"){
         return menu.find(pizza => pizza.id === identifier)
+    }
+    else{
+        TypeError("identifier must be string or number")
     }
 }
 
