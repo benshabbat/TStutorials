@@ -1,4 +1,5 @@
 type Pizza = {
+    id: number;
     name: string;
     price: number;
 }
@@ -9,10 +10,10 @@ type Order {
     status: "orderded" | "completed";
 }
 const menu:Pizza[] =[
-    {name:"margarita", price: 5},
-    {name:"Olives", price: 7},
-    {name:"vegetarian", price: 6},
-    {name:"mushrooms", price: 8},
+    {id:0,name:"margarita", price: 5},
+    {id:1,name:"Olives", price: 7},
+    {id:2,name:"vegetarian", price: 6},
+    {id:3,name:"mushrooms", price: 8},
 ]
 
 let nextOrderId=0;
@@ -30,7 +31,7 @@ function placeOrder(namePizza:string){
         throw new Error(`Pizza with name ${namePizza} not found`);
     }
     cashInRegister += pizza.price;
-    const newOrder ={
+    const newOrder:Order ={
         id:nextOrderId++,
         pizzaName: pizza.name,
         status:"orderded"
@@ -48,7 +49,7 @@ function completedOrder(orderId:number){
     return order
 }
 
-addNewPizza({name:"Tommatos", price: 9})
+addNewPizza({id:4,name:"Tommatos", price: 9})
 placeOrder("Tommatos")
 completedOrder(0)
 console.log("Order",orderQue)
