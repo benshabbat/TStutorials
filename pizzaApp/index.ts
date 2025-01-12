@@ -3,10 +3,10 @@ type Pizza = {
     price: number;
 }
 
-interface Order {
+type Order {
     id: number;
     pizzaName: string;
-    status: string;
+    status: "orderded" | "completed";
 }
 const menu:Pizza[] =[
     {name:"margarita", price: 5},
