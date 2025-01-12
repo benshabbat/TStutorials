@@ -20,7 +20,7 @@ let cashInRegister = 100;
 
 const orderQue: Order[] = [];
 
-function addNewPizza(pizzaObj){
+function addNewPizza(pizzaObj:Pizza){
     menu.push(pizzaObj)
 }
 
